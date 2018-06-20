@@ -1,0 +1,63 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(["actor", "Atras"]) ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>
+        Editar Actor
+    </h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<?php
+    echo $this->tag->form(
+        [
+            "actor/save",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        ]
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldNombreActor" class="col-sm-2 control-label">Id Actor</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["id_actor", "size" => 30, "class" => "form-control", "id" => "fieldIdActor"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldNombreActor" class="col-sm-2 control-label">Nombre del Actor</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["nombre_actor", "size" => 30, "class" => "form-control", "id" => "fieldNombreActor"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldAã±oNacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->dateField(["fecha_nacimiento", "type" => "date", "class" => "form-control", "id" => "fieldFechaNacimiento"]) ?>
+    </div>
+</div>
+
+
+<?php //echo $this->tag->hiddenField("id_actor") ?>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(["Modificar", "class" => "btn btn-success"]) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>

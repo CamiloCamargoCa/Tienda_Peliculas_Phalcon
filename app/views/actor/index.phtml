@@ -1,0 +1,56 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="page-header">
+    <h1>
+        Buscar Actor
+    </h1>
+    <p>
+        <?php echo $this->tag->linkTo(["actor/new", "Ingresar Actor"]) ?>
+    </p>
+</div>
+
+<?php echo $this->getContent() ?>
+
+<?php
+    echo $this->tag->form(
+        [
+            "actor/search",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        ]
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldIdActor" class="col-sm-2 control-label">Id</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["id_actor", "type" => "number", "class" => "form-control", "id" => "fieldIdActor"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldNombreActor" class="col-sm-2 control-label">Nombre</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["nombre_actor", "size" => 30, "class" => "form-control", "id" => "fieldNombreActor"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldAã±oNacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["fecha_nacimiento", "type" => "date", "class" => "form-control", "id" => "fieldAã±oNacimiento"]) ?>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(["Buscar", "class" => "btn btn-default"]) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>

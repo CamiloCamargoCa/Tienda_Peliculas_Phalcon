@@ -1,0 +1,56 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="page-header">
+    <h1>
+        Buscar Director
+    </h1>
+    <p>
+        <?php echo $this->tag->linkTo(["director/new", "Ingresar Director"]) ?>
+    </p>
+</div>
+
+<?php echo $this->getContent() ?>
+
+<?php
+    echo $this->tag->form(
+        [
+            "director/search",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        ]
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldIdDirector" class="col-sm-2 control-label">Id del Director</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["id_director", "type" => "number", "class" => "form-control", "id" => "fieldIdDirector"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldNombreDirector" class="col-sm-2 control-label">Nombre del Director</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["nombre_director", "size" => 30, "class" => "form-control", "id" => "fieldNombreDirector"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldFechaNacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["fecha_nacimiento", "type" => "date", "class" => "form-control", "id" => "fieldFechaNacimiento"]) ?>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(["Buscar", "class" => "btn btn-default"]) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>

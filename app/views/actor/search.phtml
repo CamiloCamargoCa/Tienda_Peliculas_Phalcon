@@ -1,0 +1,67 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<?php use Phalcon\Tag; ?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(["actor/index", "Atras"]); ?></li>
+            <li class="next"><?php echo $this->tag->linkTo(["actor/new", "Ingresar Actor"]); ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>Lista Actores</h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+            <th>Nombre</th>
+            <th>Fecha de Nacimiento</th>
+
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($page->items as $actor): ?>
+            <tr>
+                <td><?php echo $actor->id_actor ?></td>
+            <td><?php echo $actor->nombre_actor ?></td>
+            <td><?php echo $actor->fecha_nacimiento ?></td>
+
+                <td><?php echo $this->tag->linkTo(["actor/edit/" . $actor->id_actor, "Editar"]); ?></td>
+                <td><?php echo $this->tag->linkTo(["actor/delete/" . $actor->id_actor, "Eliminar"]); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-sm-1">
+        <p class="pagination" style="line-height: 1.42857;padding: 6px 12px;">
+            <?php echo $page->current, "/", $page->total_pages ?>
+        </p>
+    </div>
+    <div class="col-sm-11">
+        <nav>
+            <ul class="pagination">
+                <li><?php echo $this->tag->linkTo("actor/search", "Primero") ?></li>
+                <li><?php echo $this->tag->linkTo("actor/search?page=" . $page->before, "<<") ?></li>
+                <li><?php echo $this->tag->linkTo("actor/search?page=" . $page->next, ">>") ?></li>
+                <li><?php echo $this->tag->linkTo("actor/search?page=" . $page->last, "Ultimo") ?></li>
+            </ul>
+        </nav>
+    </div>
+</div>
